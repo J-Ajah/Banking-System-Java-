@@ -21,13 +21,22 @@ public class Branch implements IBranch{
 
     @Override
     public boolean newCustomer(String customerName, double initTransaction) {
-        //customers.add(name,initTransaction);
+        //Checks if the customer exits. if customer doesn't it creates a new customer and adds initial transaction
+        if(findCustomer(customerName) == null){
+         this.customers.add(new Customer(customerName,initTransaction));
+
+            return  true;
+        }
         return false;
     }
 
     @Override
     public boolean addCustomerTransaction(String customerName, double transaction) {
-
+        //checks if customer exits. if true,
+        if(findCustomer(customerName) != null){
+            findCustomer(customerName).addTansaction(transaction);
+            return  true;
+        }
         return false;
     }
 
@@ -42,5 +51,10 @@ public class Branch implements IBranch{
         }
 
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }

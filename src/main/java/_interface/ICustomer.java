@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public interface ICustomer {
    String getName();
-   ArrayList<Double> getTansaction();
+   ArrayList<Double> getTansactions();
    void addTansaction(double transaction);
 
 }

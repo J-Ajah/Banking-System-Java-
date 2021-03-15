@@ -4,9 +4,10 @@ public class Customer implements ICustomer{
     private String name;
     private ArrayList<Double>  transactions;
 
-    public Customer(String name) {
+    public Customer(String name, double initTransaction) {
         this.name = name;
         transactions = new ArrayList<>();
+        addTansaction(initTransaction);
     }
 
     @Override
@@ -15,12 +16,17 @@ public class Customer implements ICustomer{
     }
 
     @Override
-    public ArrayList<Double> getTansaction() {
+    public ArrayList<Double> getTansactions() {
         return this.transactions;
     }
 
     @Override
     public void addTansaction(double transaction) {
-      transactions.add(transaction);
+      this.transactions.add(transaction);
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }
