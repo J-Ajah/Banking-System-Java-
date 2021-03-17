@@ -10,9 +10,14 @@ public class BankTest {
     public void addBranch() {
          Bank bank = new Bank("National Australia Bank");
          String branchName = "Adelaide";
-         bank.addBranch(branchName);
 
-         assertEquals(branchName, bank.findBranch(branchName).getName());
+
+         assertTrue(bank.addBranch(branchName));
+
+         //Case2 adding an exiting branch again
+        assertFalse(bank.addBranch(branchName));
+
+
 
     }
 
@@ -21,10 +26,8 @@ public class BankTest {
         Bank bank = new Bank("National Australia Bank");
         String branchName = "Adelaide";
         bank.addBranch(branchName);
-        Branch branch = bank.findBranch(branchName);
-        assertTrue(branch.newCustomer("Tim",50.05));
-
-
+        assertTrue(bank.addCustomer(branchName,"Tim",50.05));
+        assertFalse(bank.addCustomer(null,"Michael",120));
     }
 
     @Test
@@ -34,6 +37,9 @@ public class BankTest {
         bank.addBranch(branchName);
         boolean status = bank.addCustomerTransaction(branchName,"Tim",50.05);
         assertTrue(status);
+
+        //  Case2 : Testing for a non existing bank
+        assertFalse(bank.addCustomerTransaction(null,"Tim",50.05));
 
     }
 
@@ -57,5 +63,6 @@ public class BankTest {
 
         bank.addCustomerTransaction(branchName,"Mike",1.65);
         assertTrue(bank.listCustomers("Adelaide", true));
+        assertFalse(bank.listCustomers("Takoradi",true));
     }
 }

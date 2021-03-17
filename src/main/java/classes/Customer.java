@@ -28,8 +28,4 @@ public class Customer implements ICustomer {
       this.transactions.add(transaction);
     }
 
-    @Override
-    public String toString() {
-        return this.name;
-    }
 }
