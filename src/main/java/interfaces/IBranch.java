@@ -1,3 +1,6 @@
+package interfaces;
+import classes.Customer;
+
 import java.util.ArrayList;
 
 public interface IBranch {

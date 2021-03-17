@@ -1,6 +1,9 @@
+package classes;
+import interfaces.ICustomer;
+
 import java.util.ArrayList;
 
-public class Customer implements ICustomer{
+public class Customer implements ICustomer {
     private String name;
     private ArrayList<Double>  transactions;
 

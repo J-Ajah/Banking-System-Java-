@@ -1,3 +1,4 @@
+package classes;
 public class Main {
     public static void main(String[] args) {
           Bank bank = new Bank("National Australia Bank");
@@ -14,7 +15,7 @@ public class Main {
           bank.addCustomerTransaction("Adelaide","Tim",12.44);
           bank.addCustomerTransaction("Adelaide","Mike",1.65);
 
-          bank.listCustomers("Adelaide", true);
+          System.out.println( bank.listCustomers("Adelaide", true));
 
 
     }

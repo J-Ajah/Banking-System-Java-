@@ -1,6 +1,9 @@
+package classes;
+import interfaces.IBranch;
+
 import java.util.ArrayList;
 
-public class Branch implements IBranch{
+public class Branch implements IBranch {
     private String name;
     private ArrayList<Customer> customers;
 

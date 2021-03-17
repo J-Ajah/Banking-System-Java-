@@ -1,6 +1,9 @@
+package classes;
+import interfaces.IBank;
+
 import java.util.ArrayList;
 
-public class Bank implements IBank{
+public class Bank implements IBank {
     private String name;
     private static ArrayList<Branch> branches;
 
