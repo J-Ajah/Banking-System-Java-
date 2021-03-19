@@ -10,7 +10,7 @@ public class Customer implements ICustomer {
     public Customer(String name, double initTransaction) {
         this.name = name;
         transactions = new ArrayList<>();
-        addTansaction(initTransaction);
+        addTransaction(initTransaction);
     }
 
     @Override
@@ -19,12 +19,12 @@ public class Customer implements ICustomer {
     }
 
     @Override
-    public ArrayList<Double> getTansactions() {
+    public ArrayList<Double> getTransactions() {
         return this.transactions;
     }
 
     @Override
-    public void addTansaction(double transaction) {
+    public void addTransaction(double transaction) {
       this.transactions.add(transaction);
     }
 

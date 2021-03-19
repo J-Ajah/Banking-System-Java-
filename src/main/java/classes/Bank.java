@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Bank implements IBank {
     private String name;
-    private static ArrayList<Branch> branches;
+    private ArrayList<Branch> branches;
 
     public Bank(String name) {
         this.name = name;
@@ -44,8 +44,7 @@ public class Bank implements IBank {
         return false;
     }
 
-    @Override
-    public Branch findBranch(String branchName) {
+    private Branch findBranch(String branchName) {
 
         for (int i =0; i < this.branches.size(); i++){
             Branch branch =  this.branches.get(i);
@@ -73,7 +72,7 @@ public class Bank implements IBank {
                if(printTransactions){
                    System.out.println("Transactions");
 
-                   ArrayList<Double> transaction  = branchCustomers.get(i).getTansactions();
+                   ArrayList<Double> transaction  = branchCustomers.get(i).getTransactions();
                     //Prints the transactions that was made by the given customer
                    for(int j = 0; j <transaction.size(); j++){
                        System.out.println("[" + (j+1) +"]" + " Amount "+ transaction.get(j));

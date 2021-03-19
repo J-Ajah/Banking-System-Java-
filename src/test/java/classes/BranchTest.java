@@ -14,64 +14,54 @@ public class BranchTest {
 
     @Test
     public void getCustomers() {
-        Bank bank = new Bank("National Australia Bank");
         String branchName = "Adelaide";
-        //adds branch to the list of branches
-        bank.addBranch(branchName);
-        //adds customers to bank branch
-        bank.addCustomer(branchName,"Tim",50.05);
-        bank.addCustomer(branchName,"Mike",175.34);
-        //finds branch
-        Branch branch = bank.findBranch(branchName);
+
+        //new branch object is created
+        Branch branch = new Branch(branchName);
+
+        //Adding few customers
+        branch.newCustomer("Tim",20);
+        branch.newCustomer("Yaww",50);
+        branch.newCustomer("Emma",80);
+        //checking if it is not empty
         assertNotNull(branch.getCustomers());
 
-        //Case 2
-        String branchTwo = "Takoradi";
-        //adds branch to the list of branches that are available
-        bank.addBranch(branchTwo);
-        Branch branches = bank.findBranch(branchTwo);
 
-        //If no customer is been added to the branch list
-        assertTrue(branches.getCustomers().isEmpty());
     }
 
     @Test
     public void newCustomer() {
-        Bank bank = new Bank("National Australia Bank");
+
         String branchName = "Adelaide";
-        bank.addBranch(branchName);
-        Branch branch = bank.findBranch(branchName);
-        assertTrue(branch.newCustomer("Tim",50.05));
-        assertFalse(branch.newCustomer("Tim",50.05));
+
+        //new branch object is been created
+        Branch branch = new Branch(branchName);
+
+      assertTrue(branch.newCustomer("Tim",50.05));
+
+      //Trying to add an existing customer
+      assertFalse(branch.newCustomer("Tim",50.05));
 
 
     }
 
     @Test
     public void addCustomerTransaction() {
-        Bank bank = new Bank("National Australia Bank");
         String branchName = "Adelaide";
-        bank.addBranch(branchName);
-        Branch branch = bank.findBranch(branchName);
-        branch.newCustomer("Tim",50.05);
+        Branch branch = new Branch(branchName);
+
+        //Adding a new customer
+        branch.newCustomer("Tim",20.00);
+
+        //Adding a transaction to an existing customer
         boolean status = branch.addCustomerTransaction("Tim",60.00);
-
-        boolean status2 = branch.addCustomerTransaction("Mike",60.00);
+        //Asserting that the transaction is sucessful
         assertTrue(status);
+
+        //Adding  a transaction to a non existing customers
+        boolean status2 = branch.addCustomerTransaction("Mike",60.00);
         assertFalse(status2);
-    }
-
-    @Test
-    public void findCustomer() {
-        Bank bank = new Bank("National Australia Bank");String branchName = "Adelaide";
-        bank.addBranch(branchName);
-        Branch branch = bank.findBranch(branchName);
-        branch.newCustomer("Tim",50.05);
-       Customer customer =  branch.findCustomer("Tim");
-       assertNotNull(customer);
-
-       Customer customer1 =  branch.findCustomer("Mike");
-       assertNull(customer1);
 
     }
+
 }

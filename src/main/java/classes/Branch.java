@@ -37,14 +37,14 @@ public class Branch implements IBranch {
     public boolean addCustomerTransaction(String customerName, double transaction) {
         //checks if customer exits. if true,
         if(findCustomer(customerName) != null){
-            findCustomer(customerName).addTansaction(transaction);
+            findCustomer(customerName).addTransaction(transaction);
             return  true;
         }
         return false;
     }
 
-    @Override
-    public Customer findCustomer(String customerName) {
+
+     private Customer findCustomer(String customerName) {
         //Returns customer only if customer exits
         for (int i =0; i < this.customers.size(); i++){
             Customer customer =  this.customers.get(i);

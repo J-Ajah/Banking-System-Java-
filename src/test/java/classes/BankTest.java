@@ -2,6 +2,9 @@ package classes;
 
 import org.junit.Test;
 
+
+import java.lang.reflect.ReflectPermission;
+
 import static org.junit.Assert.*;
 
 public class BankTest {
@@ -14,7 +17,7 @@ public class BankTest {
 
          assertTrue(bank.addBranch(branchName));
 
-         //Case2 adding an exiting branch again
+         // adding an already exiting branch again
         assertFalse(bank.addBranch(branchName));
 
 
@@ -26,7 +29,11 @@ public class BankTest {
         Bank bank = new Bank("National Australia Bank");
         String branchName = "Adelaide";
         bank.addBranch(branchName);
+
+        //Testing to see if a customer can be added to a specific branch
         assertTrue(bank.addCustomer(branchName,"Tim",50.05));
+
+        //Testing for null customers
         assertFalse(bank.addCustomer(null,"Michael",120));
     }
 
@@ -38,18 +45,8 @@ public class BankTest {
         boolean status = bank.addCustomerTransaction(branchName,"Tim",50.05);
         assertTrue(status);
 
-        //  Case2 : Testing for a non existing bank
+        //  Case2 : Testing for a non existing branch
         assertFalse(bank.addCustomerTransaction(null,"Tim",50.05));
-
-    }
-
-    @Test
-    public void findBranch() {
-        Bank bank = new Bank("National Australia Bank");
-        String branchName = "Adelaide";
-        bank.addBranch(branchName);
-        Branch branch = bank.findBranch(branchName);
-        assertNotNull(branch);
 
     }
 
